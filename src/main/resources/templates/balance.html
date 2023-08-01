@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http:www.thymeleaf.org">
+
+<head th:replace="fragments/cdn :: cdn"></head>
+
+<body>
+    <div th:insert="fragments/nav :: navbar"></div>
+    <div class="container">
+
+        <ul class="nav nav-tabs">
+            <li role="presentation">
+                <a th:href="@{/}">APIs</a>
+            </li>
+            <li role="presentation" class="active">
+                <a th:href="@{/balance}">Balances</a>
+            </li>
+            <li role="presentation">
+                <a th:href="@{/transactions}">Transactions</a>
+            </li>
+        </ul>
+
+        <div class="jumbotron custom-jumbotron" style="margin-top: 50px;">
+
+            <header class="page-header">
+                <h2><strong>Balances</strong></h2>
+            </header>
+
+            <div>
+                <table class="table table-hover custom-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 200px;">Date</th>
+                            <th style="width: 200px;">Balance</th>
+                            <th style="width: 200px;">Available balance</th>
+                            <th style="width: 200px;">Currency</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="balance : ${balanceList}" class="transaction-row">
+                            <td th:text="${balance.date}"></td>
+                            <td th:text="${balance.balance}"></td>
+                            <td th:text="${balance.availableBalance}"></td>
+                            <td th:text="${balance.currency}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer th:include="fragments/footer :: footer"></footer>
+</body>
+
+</html>

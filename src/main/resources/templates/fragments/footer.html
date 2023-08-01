@@ -1,0 +1,16 @@
+<div th:fragment="footer" xmlns:th="http://www.w3.org/1999/xhtml"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+	<footer>
+        <nav>
+            <h3>Services</h3>
+            <ul>
+                <li><a th:href="@{/balance}">Balance</a></li>
+                <li><a href="/transactions">Transactions</a></li>
+                <li><a href="/">Transfer</a></li>
+            </ul>
+        </nav>
+        <p class="copyright">Test API<sup>&copy;</sup></p>
+    </footer>
+
+</div>

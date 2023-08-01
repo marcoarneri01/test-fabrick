@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/cdn :: cdn">
+</head>
+<body>
+<div th:insert="fragments/nav :: navbar"></div>
+<div class="container">
+		<header class="page-header">
+			<h3>Inserisci i dati per la registrazione</h3>
+		</header>
+		<form action="api/accounts/transactions"
+			method="get" class="form-horizontal" id="transactionForm">
+
+			
+			<!-- ------------------ fromDate ------------------ -->
+
+			<div class="form-group">
+
+				<label class="col-md-1 control-label">From Date</label>
+				<div class="col-md-4 inputGroupContainer">
+					<div class="input-group date"  id="dp">
+						<span class="input-group-addon"> 
+						<i class="glyphicon glyphicon-calendar"></i> 
+						</span> 
+						<input type="text" name="fromAccountingDate" placeholder="YYYY/MM/DD" class="form-control" id="fromAccountingDate">
+					</div>
+				</div>
+				<div class="col-md-7 error" id="infoNascita"></div>
+			</div>
+
+			<script type="text/javascript">
+				$(function() {
+					$('#dp').datepicker({
+						format : 'yyyy-mm-dd',
+						autoclose : true,
+						startDate : '1900/01/01',
+						endDate : new Date()
+					}).on(
+							'changeDate',
+							function(event) {
+								$('#utenteForm').bootstrapValidator(
+										'revalidateField', 'nascita');
+							});
+				});
+			</script>
+			
+			<!-- ------------------ toDate ------------------ -->
+
+			<div class="form-group">
+
+				<label class="col-md-1 control-label">To Date</label>
+				<div class="col-md-4 inputGroupContainer">
+					<div class="input-group date"  id="dp2">
+						<span class="input-group-addon"> 
+						<i class="glyphicon glyphicon-calendar"></i> 
+						</span> 
+						<input type="text" name="toAccountingDate" placeholder="YYYY/MM/DD" class="form-control" id="toAccountingDate">
+					</div>
+				</div>
+				<div class="col-md-7 error" id="infoNascita"></div>
+			</div>
+
+			<script type="text/javascript">
+				$(function() {
+					$('#dp2').datepicker({
+						format : 'yyyy-mm-dd',
+						autoclose : true,
+						startDate : '1900/01/01',
+						endDate : new Date()
+					}).on(
+							'changeDate',
+							function(event) {
+								$('#utenteForm').bootstrapValidator(
+										'revalidateField', 'nascita');
+							});
+				});
+			</script>
+
+			
+
+			<div class="row">
+				<div class="col-md-4 col-md-offset-1">
+					<button type="submit" class="btn btn-warning">
+						Send&nbsp;&nbsp;<span class="glyphicon glyphicon-send"></span>
+					</button>
+				</div>
+			</div>
+
+		</form>
+
+
+	</div>
+<footer th:include="fragments/footer :: footer"></footer>
+</body>
+</html>
